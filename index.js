@@ -27,10 +27,11 @@ var menuTemplate = [
         ]
     }
 ];
-if (process.platform === "darwin") {
-    menuTemplate.unshift({});
-}
+
 app.on("ready", ()=> {
+    if (process.platform === "darwin") {
+        menuTemplate.unshift({});
+    }
     mainwindow = createWindow("discord.html", 1480, 760, "main", false, false);
     const mainMenu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(mainMenu);
