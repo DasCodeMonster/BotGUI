@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="discordstyle.css" type="text/css">    
+    <title>Discord</title>
+    <script src="scripts.js"></script>
+    <!-- <script src="index.js"></script> -->
+</head>
+<body>
+    <div id="leftside">
+        <div id="topleft" class="tops">
+            left
+        </div>
+        <hr>
+    </div>
+    <div id="channel">
+        <div id="topchannel" class="tops">
+            channel
+        </div>
+        <hr>
+    </div>
+    <div id="chat">
+        <div id="topchat" class="tops">
+            chat
+        </div>
+        <hr>
+        <div id="innerchat">
+            <main id="main" onclick="startbot()" style="border: 1px solid red">Start bot!</main>
+        </div>
+    </div>
+    <div id="memberinfo">
+        <div id="membertop" class="tops">
+            member
+            <svg id="close" width="25" height="25" class="windowbutton" onclick="closewindow()">
+                <line class="closelines" id="line1" x1="0%" y1="0%" x2="100%" y2="100%"/>
+                <line class="closelines" id="line2" x1="0%" y1="100%" x2="100%" y2="0%"/>
+            </svg>
+            <svg id="maximizebutton" width="25" height="25" class="windowbutton" onclick="maximizewindow()">
+                <rect id="rect1" width=100% height="100%"/>
+            </svg>
+            <svg id="minimizebutton" width="25" height="25" class="windowbutton" onclick="hidewindow()">
+                <line id="minimize" x1="0" y1="100%" x2="100%" y2="100%"/>
+            </svg>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>
