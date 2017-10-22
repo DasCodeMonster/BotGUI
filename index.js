@@ -32,7 +32,6 @@ if (process.platform === "darwin") {
 }
 app.on("ready", ()=> {
     mainwindow = createWindow("discord.html", 1480, 760, "main", false, false);
-    // mainwindow = createWindow("discord.html", 100, 100, "main", false, false);
     const mainMenu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(mainMenu);
     mainwindow.on("ready-to-show", () => {
