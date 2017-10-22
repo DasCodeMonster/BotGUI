@@ -117,6 +117,7 @@ class Play extends commando.Command {
                                     console.log("playlist fetched");
                                     console.log(this.IDs);
                                     //this.IDs.reverse();
+                                    var i = 0;
                                     this.IDs.forEach((page, index) => {
                                         youtubeV3.videos.list({
                                             part: "snippet, contentDetails",
@@ -141,7 +142,12 @@ class Play extends commando.Command {
                                                     Data.forEach((songs, index) => {
                                                         songs.reverse();
                                                         songs.forEach((song, index) => {
-                                                            this.queue.splice(1,0,song);
+                                                            if (this.queue.length > 1) {
+                                                                this.queue.splice(1,0,song);
+                                                            }
+                                                            else {
+                                                                this.queue.unshift(song);
+                                                            }
                                                         });
                                                     });
                                                     console.log(this.queue);
