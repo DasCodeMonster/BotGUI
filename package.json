@@ -9,6 +9,7 @@
   "author": "DasCodeMonster",
   "license": "ISC",
   "dependencies": {
+    "curl": "^0.1.4",
     "discord.js": "^11.2.1",
     "discord.js-commando": "^0.9.0",
     "electron": "^1.7.9",

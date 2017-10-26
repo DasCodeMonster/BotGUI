@@ -3,8 +3,6 @@ const time = require("node-datetime");
 const path = require('path');
 const sqlite = require('sqlite');
 const keys = require('./Token&Keys');
-console.log("hallo welt!");
-return;
 const client = new Commando.Client({
     owner: keys.OwnerID,
     unknownCommandRespond: false
@@ -207,4 +205,12 @@ process.once('SIGINT', () => {
     client.provider.db.close();
     client.destroy();
     process.exit(0);
+});
+process.on('unhandledRejection', (reason, p) => {
+    console.error('Unhandled Rejection at:', p, 'reason:', reason);
+  });
+process.on('warning', (warning) => {
+    console.warn(warning.name);    // Print the warning name
+    console.warn(warning.message); // Print the warning message
+    console.warn(warning.stack);   // Print the stack trace
 });
