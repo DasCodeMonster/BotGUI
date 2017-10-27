@@ -33,6 +33,7 @@ body {
     background-color: rgb(82, 82, 82);
     margin-left: 20%;
     border-bottom: 1px solid black;
+    -webkit-region
 }
 #member {
     min-height: calc(100% - 50px);
