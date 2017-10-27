@@ -51,6 +51,7 @@ body {
     height: calc(100% - 50px);
     background-color: rgb(48, 48, 48);
     margin: 0;
+    overflow-y: auto;
 }
 #line1 {
     stroke: black;

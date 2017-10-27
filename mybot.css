@@ -50,4 +50,5 @@ body {
     max-height: 95%;
     background-color: rgb(94, 94, 94);
     float: left;
+    overflow-y: auto;
 }

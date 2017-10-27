@@ -16,6 +16,7 @@
     "googleapis": "^22.2.0",
     "node-datetime": "^2.0.3",
     "sqlite": "^2.8.0",
+    "tree-kill": "^1.2.0",
     "ytdl-core": "^0.18.1"
   }
 }

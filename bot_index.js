@@ -188,6 +188,7 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
 
 });
 client.on("warn", info => {
+    console.log("info".fontcolor("yellow"))
 
 });
 console.log("bot is logging in...");
@@ -213,4 +214,13 @@ process.on('warning', (warning) => {
     console.warn(warning.name);    // Print the warning name
     console.warn(warning.message); // Print the warning message
     console.warn(warning.stack);   // Print the stack trace
+});
+process.on("message", (message)=> {
+    if (message === "stop") {
+        console.log("exeting now".fontcolor("yellow"));
+        client.provider.db.close();
+        client.destroy();
+        process.exit(0);
+
+    }
 });

@@ -1,39 +1,20 @@
 const electron = require("electron");
-const {app, BrowserWindow, Menu} = electron;
+const {app, BrowserWindow, Menu, MenuItem} = electron;
 const path = require("path");
 const url = require("url");
-var mainwindow
-var menuTemplate = [
-    {
-        label: "file",
-        submenu: [
-            {
-                label: "test",
-                click() {
-                    console.log("test");
-                }
-            }, {
-                label: "quit",
-                accelerator: process.platform === "darwin" ? "Command+Q":"Ctrl+Q",
-                click() {
-                    app.quit();
-                }
-            }, {
-                label: "new",
-                click() {
-                    createWindow("add.html", 300, 200, "add Item", false, mainwindow);
-                }
-            }
-        ]
-    }
-];
+// var mainwindow
 if (process.platform === "darwin") {
     menuTemplate.unshift({});
 }
 app.on("ready", ()=> {
-    mainwindow = createWindow("mybot_VL.html", 1480, 760, "main", false, false);
+    var mainwindow = createWindow("mybot_VL.html", 1480, 760, "main", false, false);
     // mainwindow = createWindow("discord.html", 100, 100, "main", false, false);
-    const mainMenu = Menu.buildFromTemplate(menuTemplate);
+    const mainMenu = new Menu();
+    mainMenu.append(new MenuItem({
+        label: "quit",
+        accelerator: process.platform === "darwin" ? "Command+Q":"Ctrl+Q",
+        visible: false
+    }))
     Menu.setApplicationMenu(mainMenu);
     mainwindow.on("ready-to-show", () => {
         resizeTo(screen.width, screen.height);
