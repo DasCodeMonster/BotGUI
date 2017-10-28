@@ -96,6 +96,6 @@ function stopBot() {
     child.send("stop");
     botRunning = false;
 }
-module.exports.shortStop = function() {
-    if (child) child.send("stop");
-}
+electron.remote.app.on("before-quit", ()=>{
+    if(botRunning) child.send("stop");
+});

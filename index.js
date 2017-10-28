@@ -30,8 +30,14 @@ function createWindow(html, width, height, title, frame, parent, show) {
         label: "quit",
         accelerator: "Ctrl+q",
         visible: true,
-        click: shortclose
+        click: app.quit
     }));
+    // mainMenu.append(new MenuItem({
+    //     label: "reload",
+    //     accelerator: "Ctrl+r",
+    //     visible: false,
+    //     click: window.reload
+    // }));
     window.loadURL(url.format({
         pathname: path.join(__dirname, html),
         protocol: "file",
@@ -41,7 +47,4 @@ function createWindow(html, width, height, title, frame, parent, show) {
         delete window;
     });
     return window;
-}
-function shortclose(){
-    scripts.shortStop();
 }
