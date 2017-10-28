@@ -27,6 +27,9 @@ client.setProvider(
 ).catch(console.error);
 
 client.on("ready", () => {
+    process.send({
+        "message":"ready"
+    });
     console.log("bot startet");
     function repeatEvery(func, interval) {
         // Check current time and calculate the delay until next interval
@@ -128,16 +131,6 @@ client.on("guildUpdate", (oldGuild, newGuild) => {
 });
 client.on("message", async message => {
     if (message.author.bot) return;
-    /*var connection = message.guild.voiceConnection.dispatcher.stream.playStream();
-    message.guild.voiceConnection.dispatcher.se
-    message.guild.voiceConnection.dispatcher.on("end", reason => {
-        console.log(reason);
-
-    });*/
-    /*console.log(message.guild.member("221047590681051152"));
-    message.reply(message.guild.member("221047590681051152"));
-    message.member.*/
-    
 });
 client.on("messageDelete", async message => {
     
@@ -222,5 +215,15 @@ process.on("message", (message)=> {
         client.destroy();
         process.exit(0);
 
+    }else if (message === "getGuilds") {
+        var guilds = [];
+        client.guilds.forEach((guild, key)=>{
+            // console.log(guild.name);
+            guilds.push(guild);
+        });
+        process.send({
+            "message": "guilds",
+            "guilds": guilds
+        });
     }
 });

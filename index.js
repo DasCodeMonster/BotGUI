@@ -3,19 +3,12 @@ const {app, BrowserWindow, Menu, MenuItem} = electron;
 const path = require("path");
 const url = require("url");
 // var mainwindow
-if (process.platform === "darwin") {
-    menuTemplate.unshift({});
-}
+const mainMenu = new Menu();
+
 app.on("ready", ()=> {
     var mainwindow = createWindow("mybot_VL.html", 1480, 760, "main", false, false);
     // mainwindow = createWindow("discord.html", 100, 100, "main", false, false);
-    const mainMenu = new Menu();
-    mainMenu.append(new MenuItem({
-        label: "quit",
-        accelerator: process.platform === "darwin" ? "Command+Q":"Ctrl+Q",
-        visible: false
-    }))
-    Menu.setApplicationMenu(mainMenu);
+    mainwindow.setMenu(mainMenu);
     mainwindow.on("ready-to-show", () => {
         resizeTo(screen.width, screen.height);
         mainwindow.show();  
@@ -33,6 +26,12 @@ function createWindow(html, width, height, title, frame, parent, show) {
         minHeight: 600,
         minWidth: 1092
     });
+    mainMenu.append(new MenuItem({
+        label: "quit",
+        accelerator: "Ctrl+q",
+        visible: true,
+        click: shortclose
+    }));
     window.loadURL(url.format({
         pathname: path.join(__dirname, html),
         protocol: "file",
@@ -43,6 +42,6 @@ function createWindow(html, width, height, title, frame, parent, show) {
     });
     return window;
 }
-function hidewindow() {
-    app.hide();
+function shortclose(){
+    scripts.shortStop();
 }
