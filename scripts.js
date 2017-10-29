@@ -75,7 +75,10 @@ function startbot() {
         if (message.message === "guilds")
         {
             message.guilds.forEach((guild)=>{
-                document.getElementById("guilds").innerHTML+=`${guild.name}`.fontcolor("#bababa").fontsize(5);
+                let div = document.createElement("div");
+                div.id = guild;
+                document.getElementById("guilds").appendChild(div);
+                document.getElementById(guild).innerHTML+=`${guild.name}`.fontcolor("#bababa").fontsize(5);
                 document.getElementById("guilds").appendChild(linebreak);
             });
         }else if(message.message === "ready") {
@@ -98,4 +101,10 @@ function stopBot() {
 }
 electron.remote.app.on("before-quit", ()=>{
     if(botRunning) child.send("stop");
+});
+electron.remote.app.on("activate", ()=>{
+    electron.globalShortcut.register('CommandOrControl+R', ()=>{
+        electron.remote.getCurrentWindow().reload();
+        alert("success");
+    });
 });

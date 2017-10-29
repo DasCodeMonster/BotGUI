@@ -36,7 +36,7 @@ function createWindow(html, width, height, title, frame, parent, show) {
     //     label: "reload",
     //     accelerator: "Ctrl+r",
     //     visible: false,
-    //     click: window.reload
+    //     click: app.)
     // }));
     window.loadURL(url.format({
         pathname: path.join(__dirname, html),
